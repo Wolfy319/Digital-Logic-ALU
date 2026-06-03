@@ -44,12 +44,16 @@ module my_alu (
 
 	OpcodeDecoder Decoder(
 		.opcode(opcode),
+		.enable(enable),
+		.reset_n(reset_n),
 		.and_result(op_and_result),
 		.or_result(op_or_result),
 		.xor_result(op_xor_result),
 		.add_result(op_add_sub_result),
 		.sub_result(op_add_sub_result),
 		.add_sub_overflow(add_sub_overflow),
+		.a_input(A),
+		.b_input(B),
 		.result(final_result),
 		.result_overflow(final_overflow)
 	);

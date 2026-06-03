@@ -46,10 +46,10 @@ my_alu alu_module(
 );
 
 sign_magnitude magnitude(
-	.alu_bits(final_result),
-	.overflow_in(final_overflow),
+	.alu_bits(alu_leds_raw),
+	.overflow_in(alu_led_overflow),
 	.sign(sign_bit),
-	.data(data),
+	.data(data)
 );
 
 Parser parse(
