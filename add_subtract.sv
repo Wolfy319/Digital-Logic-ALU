@@ -6,6 +6,7 @@ module add_subtract (
 );
 
 logic [7:0] new_b;
+logic [7:0] temp_result;
 logic cout;
 
 assign new_b = b ^ {8{subtract}};
@@ -13,14 +14,14 @@ NBitAdder #(8) adder(
 	.A(a),
 	.B(new_b),
 	.Cin(subtract),
-	.Z(result),
+	.Z(temp_result),
 	.Cout(cout)
 );
 
-assign overflow = (a[7] ~^ (b[7] ^ subtract)) & (a[7] ^ result[7]);
+assign overflow = (a[7] ~^ (b[7] ^ subtract)) & (a[7] ^ temp_result[7]);
 
 
-  always_comb begin
+ always_comb begin
     if (subtract) 
         result = a - b;
     else

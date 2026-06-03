@@ -9,8 +9,6 @@ module HardwareDriver(
 	output logic alu_led_overflow,
 	output logic [7:0] alu_leds_raw
 );
-	
-	
 
 	
 my_alu alu_module(
