@@ -2,7 +2,6 @@ module my_alu (
 	input logic enable, reset_n, clock,
 	input logic [7:0] A, B,
 	input logic [2:0] opcode,
-
    output logic [7:0] result,
    output logic overflow
 );
