@@ -11,7 +11,7 @@ module ALU (
 );
 
 	
-	logic sign_bit
+	logic sign_bit;
 	logic subtract_bit;
 	logic [7:0] data;
 	logic [3:0] hundreds;
@@ -60,34 +60,5 @@ module ALU (
 		.result(final_result),
 		.result_overflow(final_overflow)
 	);
-
-	
-sign_magnitude magnitude(
-	.alu_bits(final_result),
-	.overflow_in(final_overflow),
-	.sign(sign_bit),
-	.data(data),
-	.overflow_out(alu_led_overflow)
-);
-
-parser parse(
-	.binary_in(data),
-	.hundreds(hundreds),
-	.tens(tens),
-	.ones(ones)
-);
-
-display display_out(
-	.sign(sign_bit),
-	.hundreds(hundreds),
-	.tens(tens),
-	.ones(ones),
-	.hex0(hex0),
-	.hex1(hex1),
-	.hex2(hex2),
-	.hex3(hex3)
-);
-
-	
 
 endmodule
