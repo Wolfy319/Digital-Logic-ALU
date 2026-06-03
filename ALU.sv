@@ -11,7 +11,7 @@ module ALU (
 );
 
 	
-	logic sign_bit;
+	logic sign_bit
 	logic subtract_bit;
 	logic [7:0] data;
 	logic [3:0] hundreds;
