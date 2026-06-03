@@ -1,12 +1,10 @@
 module sign_magnitude(
 	input logic [7:0] alu_bits,
-	input logic overflow,
+	input logic overflow_in,
 	output logic sign,
-	output logic [7:0] data,
-	output logic overflow_out
+	output logic [7:0] data
 );
 
-	assign overflow_out = overflow;
 	assign sign = alu_bits[7];
 	always_comb begin
 		if (alu_bits[7] == 1'b1) begin

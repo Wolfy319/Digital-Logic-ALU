@@ -10,16 +10,16 @@ module display(
 );
 
 SevenSegmentDecode dec_ones(
-	.digits(ones),
+	.digit(ones),
 	.segments(hex0)
 );
 
 SevenSegmentDecode dec_tens(
-	.digits(tens),
+	.digit(tens),
 	.segments(hex1)
 );
 SevenSegmentDecode dec_hundreds(
-	.digits(hundreds),
+	.digit(hundreds),
 	.segments(hex2)
 );
 

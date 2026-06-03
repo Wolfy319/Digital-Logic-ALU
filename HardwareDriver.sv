@@ -13,18 +13,18 @@ module HardwareDriver(
 logic [7:0] a, b;
 logic [2:0] opcode;
 
-always_comb begin
+always_ff @(posedge clock) begin
 	case (choice_bits)
 		2'b00: begin
-			opcode = switch_bits[0:2];
+			opcode <= switch_bits[2:0];
 		end
 		
 		2'b01: begin
-			a = switch_bits;
+			a <= switch_bits;
 		end
 		
 		2'b10: begin
-			b = switch_bits;
+			b <= switch_bits;
 		end
 	endcase
 end
@@ -33,9 +33,9 @@ my_alu alu_module(
 	.enable(clock),
 	.reset_n(reset_n),
 	.clock(clock),
-	.A(switch_bits),
-	.B(switch_bits),
-	.opcode(choice_bits),
+	.A(a),
+	.B(b),
+	.opcode(opcode),
 	.result(alu_leds_raw),
 	.overflow(alu_led_overflow)
 );
@@ -45,10 +45,9 @@ sign_magnitude magnitude(
 	.overflow_in(final_overflow),
 	.sign(sign_bit),
 	.data(data),
-	.overflow_out(alu_led_overflow)
 );
 
-parser parse(
+Parser parse(
 	.binary_in(data),
 	.hundreds(hundreds),
 	.tens(tens),
