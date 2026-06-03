@@ -56,7 +56,7 @@ module my_alu (
 	);
 
    always_ff @(posedge clock) begin
-       //result <= final_result;
+       result <= final_result;
        overflow <= final_overflow;
    end
 

@@ -9,10 +9,16 @@ module HardwareDriver(
 	output logic alu_led_overflow,
 	output logic [7:0] alu_leds_raw
 );
-
 	
 my_alu alu_module(
-
+	.enable(clock),
+	.reset_n(reset_n),
+	.clock(clock),
+	.A(switch_bits),
+	.B(switch_bits),
+	.opcode(choice_bits),
+	.result(alu_leds_raw),
+	.overflow(alu_led_overflow)
 );
 
 sign_magnitude magnitude(
