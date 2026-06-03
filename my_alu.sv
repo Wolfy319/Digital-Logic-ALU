@@ -55,8 +55,13 @@ module my_alu (
 	);
 
    always_ff @(posedge clock) begin
+		if(~reset) begin
+			result <= 8'b0;
+			overflow <= 1'b0;
+		end else begin
        result <= final_result;
        overflow <= final_overflow;
+		end
    end
 
 endmodule

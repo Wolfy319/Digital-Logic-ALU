@@ -9,7 +9,26 @@ module HardwareDriver(
 	output logic alu_led_overflow,
 	output logic [7:0] alu_leds_raw
 );
-	
+
+logic [7:0] a, b;
+logic [2:0] opcode;
+
+always_comb begin
+	case (choice_bits)
+		2'b00: begin
+			opcode = switch_bits[0:2];
+		end
+		
+		2'b01: begin
+			a = switch_bits;
+		end
+		
+		2'b10: begin
+			b = switch_bits;
+		end
+	endcase
+end
+
 my_alu alu_module(
 	.enable(clock),
 	.reset_n(reset_n),
