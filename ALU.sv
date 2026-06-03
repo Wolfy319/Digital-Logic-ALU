@@ -1,4 +1,4 @@
-module ALU (
+module my_alu (
 	input logic enable, reset_n,
 	input logic [7:0] A, B,
 	input logic [2:0] opcode
