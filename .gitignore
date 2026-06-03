@@ -1,4 +1,3 @@
 *.bak
-*.qsf
-*.qpf
 db/*
+transcript
