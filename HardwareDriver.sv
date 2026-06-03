@@ -12,6 +12,11 @@ module HardwareDriver(
 
 logic [7:0] a, b;
 logic [2:0] opcode;
+logic sign_bit;
+logic [7:0] data;
+logic [3:0] hundreds;
+logic [3:0] tens;
+logic [3:0] ones;
 
 always_ff @(posedge clock) begin
 	case (choice_bits)
@@ -36,7 +41,7 @@ my_alu alu_module(
 	.A(a),
 	.B(b),
 	.opcode(opcode),
-	.result(alu_leds_raw),
+	.result(~alu_leds_raw),
 	.overflow(alu_led_overflow)
 );
 
