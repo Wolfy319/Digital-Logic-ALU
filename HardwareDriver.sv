@@ -41,7 +41,7 @@ my_alu alu_module(
 	.A(a),
 	.B(b),
 	.opcode(opcode),
-	.result(~alu_leds_raw),
+	.result(alu_leds_raw),
 	.overflow(alu_led_overflow)
 );
 

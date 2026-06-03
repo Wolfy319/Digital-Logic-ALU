@@ -14,7 +14,7 @@ module my_alu (
 	logic [7:0] final_result;
 	logic add_sub_overflow, final_overflow;
 	
-	assign subtract_bit = opcode[2];
+	assign subtract_bit = opcode[0];
 	
 	my_and8 AndModule(
 		.a(A),
