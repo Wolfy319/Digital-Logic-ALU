@@ -8,26 +8,26 @@ module OpcodeDecoder (
 
 always_comb begin
 	// If enabled, decode opcode
-	if(reset_n === 1'b0 or ~enable) begin
-		result <= 7'b0;
-		result_overflow <= 1'b0;
-	end if (enable) begin
+	if(reset_n === 1'b0 || ~enable) begin
+		result = 7'b0;
+		result_overflow = 1'b0;
+	end else begin
 		// Pick correct result based on opcode
 		case (opcode)
-			000: result <= and_result;
-			001: result <= or_result;
-			010: result <= xor_result;
-			011: result <= a_input;
-			100: result <= add_sub_result;
-			101: result <= add_sub_result;
-		// 110: result <= unused;	
-			111: result <= b_input;
-			default: result <= 7'b0;
+			3'b000: result = and_result;
+			3'b001: result = or_result;
+			3'b010: result = xor_result;
+			3'b011: result = a_input;
+			3'b100: result = add_result;
+			3'b101: result = sub_result;
+		// 3'b110: result = unused;	
+			3'b111: result = b_input;
+			default: result = 7'b0;
 		endcase
 		
 		// Update overflow bit
-		result_overflow <= add_sub_overflow;
-	end else 
+		result_overflow = add_sub_overflow;
+	end
 	
 end
 

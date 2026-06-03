@@ -1,8 +1,6 @@
-module parser(
+module Parser (
 	input logic [7:0] binary_in,
-	ouput logic [3:0] hundreds,
-	output logic [3:0] tens,
-	output logic [3:0] ones
+	output logic [3:0] hundreds, tens, ones
 );
 
 	always_comb begin
