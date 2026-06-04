@@ -9,7 +9,7 @@ module OpcodeDecoder (
 always_comb begin
 	// If enabled, decode opcode
 	if(reset_n === 1'b0 || ~enable) begin
-		result = 7'b0;
+		result = 8'b0;
 		result_overflow = 1'b0;
 	end else begin
 		// Pick correct result based on opcode
@@ -22,7 +22,7 @@ always_comb begin
 			3'b101: result = sub_result;
 		// 3'b110: result = unused;	
 			3'b111: result = b_input;
-			default: result = 7'b0;
+			default: result = 8'b0;
 		endcase
 		
 		// Update overflow bit

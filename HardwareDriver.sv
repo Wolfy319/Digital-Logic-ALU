@@ -35,7 +35,7 @@ always_ff @(posedge clock) begin
 end
 
 my_alu alu_module(
-	.enable(clock),
+	.enable(1'b1),
 	.reset_n(reset_n),
 	.clock(clock),
 	.A(a),
