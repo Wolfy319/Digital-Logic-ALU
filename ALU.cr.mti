@@ -1,85 +1,108 @@
-C:/Users/jonwo/GameDev/Digital-Logic-ALU/or.sv {1 {vlog -work work -sv -stats=none C:/Users/jonwo/GameDev/Digital-Logic-ALU/or.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module my_or8
-
-Top level modules:
-	my_or8
-
-} {} {}} C:/Users/jonwo/GameDev/Digital-Logic-ALU/full_adder.sv {1 {vlog -work work -sv -stats=none C:/Users/jonwo/GameDev/Digital-Logic-ALU/full_adder.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module full_adder
-
-Top level modules:
-	full_adder
-
-} {} {}} C:/Users/jonwo/GameDev/Digital-Logic-ALU/display.sv {1 {vlog -work work -sv -stats=none C:/Users/jonwo/GameDev/Digital-Logic-ALU/display.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module display
-
-Top level modules:
-	display
-
-} {} {}} C:/Users/jonwo/GameDev/Digital-Logic-ALU/add_subtract.sv {1 {vlog -work work -sv -stats=none C:/Users/jonwo/GameDev/Digital-Logic-ALU/add_subtract.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module add_subtract
-
-Top level modules:
-	add_subtract
-
-} {} {}} C:/Users/jonwo/GameDev/Digital-Logic-ALU/OpcodeDecoder.sv {1 {vlog -work work -sv -stats=none C:/Users/jonwo/GameDev/Digital-Logic-ALU/OpcodeDecoder.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module OpcodeDecoder
-
-Top level modules:
-	OpcodeDecoder
-
-} {} {}} C:/Users/jonwo/GameDev/Digital-Logic-ALU/SevenSegmentDecode.sv {1 {vlog -work work -sv -stats=none C:/Users/jonwo/GameDev/Digital-Logic-ALU/SevenSegmentDecode.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module SevenSegmentDecode
-
-Top level modules:
-	SevenSegmentDecode
-
-} {} {}} C:/Users/jonwo/GameDev/Digital-Logic-ALU/xor.sv {1 {vlog -work work -sv -stats=none C:/Users/jonwo/GameDev/Digital-Logic-ALU/xor.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module my_xor8
-
-Top level modules:
-	my_xor8
-
-} {} {}} C:/Users/jonwo/GameDev/Digital-Logic-ALU/and.sv {1 {vlog -work work -sv -stats=none C:/Users/jonwo/GameDev/Digital-Logic-ALU/and.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module my_and8
-
-Top level modules:
-	my_and8
-
-} {} {}} C:/Users/jonwo/GameDev/Digital-Logic-ALU/NBitAdder.sv {1 {vlog -work work -sv -stats=none C:/Users/jonwo/GameDev/Digital-Logic-ALU/NBitAdder.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+C:/ECE204/GIthubRepo/Digital-Logic-ALU/NBitAdder.sv {1 {vlog -work work -sv -stats=none C:/ECE204/GIthubRepo/Digital-Logic-ALU/NBitAdder.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2021.1 Compiler 2021.02 Feb  3 2021
 -- Compiling module NBitAdder
 
 Top level modules:
 	NBitAdder
 
-} {} {}} C:/Users/jonwo/GameDev/Digital-Logic-ALU/Parser.sv {1 {vlog -work work -sv -stats=none C:/Users/jonwo/GameDev/Digital-Logic-ALU/Parser.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} C:/ECE204/GIthubRepo/Digital-Logic-ALU/add_subtract.sv {1 {vlog -work work -sv -stats=none C:/ECE204/GIthubRepo/Digital-Logic-ALU/add_subtract.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2021.1 Compiler 2021.02 Feb  3 2021
+-- Compiling module add_subtract
+
+Top level modules:
+	add_subtract
+
+} {} {}} C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv {0 {vlog -work work -sv -stats=none C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2021.1 Compiler 2021.02 Feb  3 2021
+-- Compiling module ALUTestbench
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(58): (vlog-2730) Undefined variable: 'tickExpected'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(58): (vlog-2730) Undefined variable: 'secondExpected'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(59): (vlog-2730) Undefined variable: 'minuteExpected'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(59): (vlog-2730) Undefined variable: 'hourExpected'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(88): (vlog-2163) Macro `HOURS_PER_DAY is undefined.
+** Error: (vlog-13069) C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(88): near ";": syntax error, unexpected ';'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(89): (vlog-2730) Undefined variable: 'minuteExpected'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(90): (vlog-2163) Macro `MINUTES_PER_HOUR is undefined.
+** Error: (vlog-13069) C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(90): near ";": syntax error, unexpected ';'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(91): (vlog-2730) Undefined variable: 'secondExpected'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(92): (vlog-2163) Macro `SECONDS_PER_MINUTE is undefined.
+** Error: (vlog-13069) C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(92): near ";": syntax error, unexpected ';'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(93): (vlog-2730) Undefined variable: 'tickExpected'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(94): (vlog-2163) Macro `TICKS_PER_SECOND is undefined.
+** Error: (vlog-13069) C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(94): near ";": syntax error, unexpected ';'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(103): (vlog-2730) Undefined variable: 'hourExpected'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(105): (vlog-2730) Undefined variable: 'hourExpected'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(112): (vlog-2730) Undefined variable: 'hourExpected'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(113): (vlog-2730) Undefined variable: 'minuteExpected'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(114): (vlog-2730) Undefined variable: 'secondExpected'.
+** Error: C:/ECE204/GIthubRepo/Digital-Logic-ALU/ALUTestbench.sv(115): (vlog-2730) Undefined variable: 'tickExpected'.
+
+} {4.0 25.0} {}} C:/ECE204/GIthubRepo/Digital-Logic-ALU/Parser.sv {1 {vlog -work work -sv -stats=none C:/ECE204/GIthubRepo/Digital-Logic-ALU/Parser.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2021.1 Compiler 2021.02 Feb  3 2021
 -- Compiling module Parser
 
 Top level modules:
 	Parser
 
-} {} {}} C:/Users/jonwo/GameDev/Digital-Logic-ALU/sign_magnitude.sv {1 {vlog -work work -sv -stats=none C:/Users/jonwo/GameDev/Digital-Logic-ALU/sign_magnitude.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} C:/ECE204/GIthubRepo/Digital-Logic-ALU/sign_magnitude.sv {1 {vlog -work work -sv -stats=none C:/ECE204/GIthubRepo/Digital-Logic-ALU/sign_magnitude.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2021.1 Compiler 2021.02 Feb  3 2021
 -- Compiling module sign_magnitude
 
 Top level modules:
 	sign_magnitude
 
-} {} {}} C:/Users/jonwo/GameDev/Digital-Logic-ALU/my_alu.sv {1 {vlog -work work -sv -stats=none C:/Users/jonwo/GameDev/Digital-Logic-ALU/my_alu.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} C:/ECE204/GIthubRepo/Digital-Logic-ALU/display.sv {1 {vlog -work work -sv -stats=none C:/ECE204/GIthubRepo/Digital-Logic-ALU/display.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2021.1 Compiler 2021.02 Feb  3 2021
+-- Compiling module display
+
+Top level modules:
+	display
+
+} {} {}} C:/ECE204/GIthubRepo/Digital-Logic-ALU/my_alu.sv {1 {vlog -work work -sv -stats=none C:/ECE204/GIthubRepo/Digital-Logic-ALU/my_alu.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2021.1 Compiler 2021.02 Feb  3 2021
 -- Compiling module my_alu
 
 Top level modules:
 	my_alu
+
+} {} {}} C:/ECE204/GIthubRepo/Digital-Logic-ALU/OpcodeDecoder.sv {1 {vlog -work work -sv -stats=none C:/ECE204/GIthubRepo/Digital-Logic-ALU/OpcodeDecoder.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2021.1 Compiler 2021.02 Feb  3 2021
+-- Compiling module OpcodeDecoder
+
+Top level modules:
+	OpcodeDecoder
+
+} {} {}} C:/ECE204/GIthubRepo/Digital-Logic-ALU/xor.sv {1 {vlog -work work -sv -stats=none C:/ECE204/GIthubRepo/Digital-Logic-ALU/xor.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2021.1 Compiler 2021.02 Feb  3 2021
+-- Compiling module my_xor8
+
+Top level modules:
+	my_xor8
+
+} {} {}} C:/ECE204/GIthubRepo/Digital-Logic-ALU/or.sv {1 {vlog -work work -sv -stats=none C:/ECE204/GIthubRepo/Digital-Logic-ALU/or.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2021.1 Compiler 2021.02 Feb  3 2021
+-- Compiling module my_or8
+
+Top level modules:
+	my_or8
+
+} {} {}} C:/ECE204/GIthubRepo/Digital-Logic-ALU/full_adder.sv {1 {vlog -work work -sv -stats=none C:/ECE204/GIthubRepo/Digital-Logic-ALU/full_adder.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2021.1 Compiler 2021.02 Feb  3 2021
+-- Compiling module full_adder
+
+Top level modules:
+	full_adder
+
+} {} {}} C:/ECE204/GIthubRepo/Digital-Logic-ALU/HardwareDriver.sv {0 {vlog -work work -sv -stats=none C:/ECE204/GIthubRepo/Digital-Logic-ALU/HardwareDriver.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2021.1 Compiler 2021.02 Feb  3 2021
+-- Compiling module HardwareDriver
+** Error: (vlog-13069) C:/ECE204/GIthubRepo/Digital-Logic-ALU/HardwareDriver.sv(53): near ")": syntax error, unexpected ')', expecting .* or '.'.
+
+} {4.0 5.0} {}} C:/ECE204/GIthubRepo/Digital-Logic-ALU/and.sv {1 {vlog -work work -sv -stats=none C:/ECE204/GIthubRepo/Digital-Logic-ALU/and.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2021.1 Compiler 2021.02 Feb  3 2021
+-- Compiling module my_and8
+
+Top level modules:
+	my_and8
 
 } {} {}}
