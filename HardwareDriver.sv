@@ -17,26 +17,34 @@ logic [7:0] data;
 logic [3:0] hundreds;
 logic [3:0] tens;
 logic [3:0] ones;
+logic enable_n;
 
 always_ff @(posedge clock) begin
-	case (choice_bits)
-		2'b00: begin
-			opcode <= switch_bits[2:0];
-		end
-		
-		2'b01: begin
-			a <= switch_bits;
-		end
-		
-		2'b10: begin
+	if(~reset_n) begin
+		a<=8'b00000000;
+		b<=8'b00000000;
+		opcode <=3'b000;
+		enable_n <= 1'b0;
+	end else begin
+		case(choice_bits)
+			2'b00: begin
+				opcode <= switch_bits;
+				enable_n <= 1'b1;
+			end
+			2'b10: begin
+				a <= switch_bits;
+			end
+			2'b01: begin
 			b <= switch_bits;
-		end
-	endcase
+			end
+		endcase
+	end
 end
+
+
 my_alu alu_module(
-	.enable(1'b1),
+	.enable(enable_n),
 	.reset_n(reset_n),
-	.clock(clock),
 	.A(a),
 	.B(b),
 	.opcode(opcode),

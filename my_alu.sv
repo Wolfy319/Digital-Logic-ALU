@@ -5,7 +5,7 @@ Authors: David, Zhair,
 
 
 module my_alu (
-	input logic enable, reset_n, clock,
+	input logic enable, reset_n,
 	input logic [7:0] A, B,
 	input logic [2:0] opcode,
    output logic [7:0] result,
@@ -64,14 +64,7 @@ module my_alu (
 		.result_overflow(final_overflow)
 	);
 
-   always_ff @(posedge clock) begin
-		if(~reset_n) begin
-			result <= 8'b0;
-			overflow <= 1'b0;
-		end else begin
-       result <= final_result;
-       overflow <= final_overflow;
-		end
-   end
-
+ 
+ assign result = final_result;
+ assign overflow = final_overflow;
 endmodule
