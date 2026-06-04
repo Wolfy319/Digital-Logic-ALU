@@ -26,7 +26,7 @@ always_comb begin
 		endcase
 		
 		// Update overflow bit
-		result_overflow = add_sub_overflow;
+		result_overflow = (opcode[2]&~opcode[1]) ? add_sub_overflow : 1'b0;
 	end
 	
 end
