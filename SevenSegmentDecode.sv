@@ -5,7 +5,12 @@
  * Adapted from Harris & Harris "Digital Design and Computer Achitecture"
  * Example 4.25 "Seven-Segment Display Decoder" (Page 198)
  *
- * Author(s): Quinn Yockey
+ * Author(s): Quinn Yockey, Zhair Maldonado
+ 
+	* reused this from the LAB 3b
+	
+	Description: based on the number, figure out what lights on the hex
+	to turn off or on based on the output of segments to turn on
  * Last Modified: 03 November 2025
  */
 
@@ -56,7 +61,7 @@ always_comb begin
     case (digit)
         //                   gfe_dcba
         4'h0: segments = 7'b100_0000;
-        /* [2] TODO */
+        // turns on and off certain segements of the work
 		  4'h1: segments = 7'b1111001;
 		  4'h2: segments = 7'b0100100;
 		  4'h3: segments = 7'b0110000;

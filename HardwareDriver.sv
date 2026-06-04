@@ -33,7 +33,6 @@ always_ff @(posedge clock) begin
 		end
 	endcase
 end
-
 my_alu alu_module(
 	.enable(1'b1),
 	.reset_n(reset_n),

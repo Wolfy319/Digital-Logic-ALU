@@ -1,3 +1,9 @@
+/*
+Authors: David, Zhair, 
+*/
+
+
+
 module my_alu (
 	input logic enable, reset_n, clock,
 	input logic [7:0] A, B,
