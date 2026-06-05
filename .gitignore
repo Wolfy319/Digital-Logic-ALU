@@ -5,6 +5,8 @@ db/*
 transcript
 incremental_db/*
 output_files/*
+work/*
+
 # ignore compilation output of ModelSim
 *.mti
 *.dat
@@ -15,6 +17,7 @@ output_files/*
 *.jpg
 *.html
 *.bsf
+*.mpf
 
 # ignore simulation output of ModelSim
 wlf*
