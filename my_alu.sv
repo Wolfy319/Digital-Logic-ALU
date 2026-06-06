@@ -13,13 +13,13 @@ module my_alu (
 	// Intermediary signals for passing values between modules
 	logic sign_bit;
 	logic subtract_bit;
-	logic [7:0] data, prev, input1;
+	logic [7:0] data, input1;
 	logic [7:0] op_and_result, op_or_result, op_xor_result, op_add_sub_result;
 	logic [7:0] final_result;
 	logic add_sub_overflow, final_overflow;
 	
 	assign subtract_bit = opcode[0];
-   assign input1 = use_A ? A : prev;
+   assign input1 = use_A ? A : result;
 	
 	// Initialize operation modules and hookup signals
 	my_and8 AndModule(
@@ -70,11 +70,9 @@ module my_alu (
 		if(~reset_n) begin
 			result <= 8'b0;
 			overflow <= 1'b0;
-			prev <= 8'b0;
-		end else begin
-       result <= final_result;
-       overflow <= final_overflow;
-		 prev <= result;
+		end else if (enable) begin
+			result <= final_result;
+			overflow <= final_overflow;
 		end
    end
 

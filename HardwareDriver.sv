@@ -24,7 +24,7 @@ logic [3:0] hundreds;
 logic [3:0] tens;
 logic [3:0] ones;
 logic [3:0] mode_display_num;
-logic enable;
+logic enable, enable_pressed, allow_enable;
 
 // Parse the signal from the switches to determine which input to update
 // and update it on the next clock cycle
@@ -37,7 +37,7 @@ always_comb begin
 	endcase
 end
 
-always_ff @(posedge ~choose_mode_n, posedge ~reset_n) begin
+always_ff @(negedge choose_mode_n, posedge ~reset_n) begin
 	if (~reset_n) begin
 		opcode <= 3'b000;
 		a_final <= 8'b00000000;
@@ -51,25 +51,41 @@ always_ff @(posedge ~choose_mode_n, posedge ~reset_n) begin
 				use_a <= switch_bits[3];
 				a_final <= a;
 				b_final <= b;
-				enable <= 1'b1;
+				allow_enable = 1'b1;
 			end
 			
 			2'b01: begin
 				a <= switch_bits;
-				enable <= 1'b0;
+				allow_enable = 1'b0;
 			end
 			
 			2'b10: begin
 				b <= switch_bits;
-				enable <= 1'b0;
+				allow_enable = 1'b0;
 			end
 		endcase
 	end
 end
 
+always_ff @(negedge clock) begin
+	if (~enable) begin
+		if (allow_enable) begin
+			if (~choose_mode_n && ~enable_pressed) begin
+				enable_pressed <= 1'b1;
+				enable <= 1'b1;
+			end else if (choose_mode_n && enable_pressed) begin
+				enable_pressed <= 1'b0;
+			end
+		end
+	end else begin
+		enable <= 1'b0;
+	end
+end
+
+
 // Feed the stored inputs into the ALU and retrieve the calculated result (if enabled)
 my_alu alu_module(
-	.enable(1'b1),
+	.enable(enable),
 	.reset_n(reset_n),
 	.clock(clock),
 	.use_A(use_a),
