@@ -18,7 +18,7 @@ module HardwareDriver(
 // Intermediate signals to allow passing between modules
 logic [7:0] a, b, a_final, b_final;
 logic [2:0] opcode;
-logic sign_bit;
+logic sign_bit, use_a;
 logic [7:0] data;
 logic [3:0] hundreds;
 logic [3:0] tens;
@@ -48,6 +48,7 @@ always_ff @(posedge ~choose_mode_n, posedge ~reset_n) begin
 		case (choice_bits)
 			2'b00: begin
 				opcode <= switch_bits[2:0];
+				use_a <= switch_bits[3];
 				a_final <= a;
 				b_final <= b;
 				enable <= 1'b1;
@@ -71,6 +72,7 @@ my_alu alu_module(
 	.enable(1'b1),
 	.reset_n(reset_n),
 	.clock(clock),
+	.use_A(use_a),
 	.A(a_final),
 	.B(b_final),
 	.opcode(opcode),

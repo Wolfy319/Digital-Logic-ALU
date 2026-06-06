@@ -3,7 +3,7 @@ Authors: David, Zhair, Wolfy
 */
 
 module my_alu (
-	input logic enable, reset_n, clock,
+	input logic enable, reset_n, clock, use_A,
 	input logic [7:0] A, B,
 	input logic [2:0] opcode,
    output logic [7:0] result,
@@ -13,35 +13,36 @@ module my_alu (
 	// Intermediary signals for passing values between modules
 	logic sign_bit;
 	logic subtract_bit;
-	logic [7:0] data;
+	logic [7:0] data, prev, input1;
 	logic [7:0] op_and_result, op_or_result, op_xor_result, op_add_sub_result;
 	logic [7:0] final_result;
 	logic add_sub_overflow, final_overflow;
 	
 	assign subtract_bit = opcode[0];
+   assign input1 = use_A ? A : prev;
 	
 	// Initialize operation modules and hookup signals
 	my_and8 AndModule(
-		.a(A),
+		.a(input1),
 		.b(B),
 		.result(op_and_result)
 	);
 	
 	my_or8 OrModule(
-		.a(A),
+		.a(input1),
 		.b(B),
 		.result(op_or_result)		
 	);
 	
 	my_xor8 XorModule(
-		.a(A),
+		.a(input1),
 		.b(B),
 		.result(op_xor_result)	
 	);
 	
 	add_subtract AddSubModule(
 		.subtract(subtract_bit),
-		.a(A),
+		.a(input1),
 		.b(B),
 		.result(op_add_sub_result),	
 		.overflow(add_sub_overflow)
@@ -58,7 +59,7 @@ module my_alu (
 		.add_result(op_add_sub_result),
 		.sub_result(op_add_sub_result),
 		.add_sub_overflow(add_sub_overflow),
-		.a_input(A),
+		.a_input(input1),
 		.b_input(B),
 		.result(final_result),
 		.result_overflow(final_overflow)
@@ -69,9 +70,11 @@ module my_alu (
 		if(~reset_n) begin
 			result <= 8'b0;
 			overflow <= 1'b0;
+			prev <= 8'b0;
 		end else begin
        result <= final_result;
        overflow <= final_overflow;
+		 prev <= result;
 		end
    end
 
