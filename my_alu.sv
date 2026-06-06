@@ -1,8 +1,6 @@
 /*
-Authors: David, Zhair, 
+Authors: David, Zhair, Wolfy 
 */
-
-
 
 module my_alu (
 	input logic enable, reset_n, clock,
@@ -12,7 +10,7 @@ module my_alu (
    output logic overflow
 );
 
-	
+	// Intermediary signals for passing values between modules
 	logic sign_bit;
 	logic subtract_bit;
 	logic [7:0] data;
@@ -22,6 +20,7 @@ module my_alu (
 	
 	assign subtract_bit = opcode[0];
 	
+	// Initialize operation modules and hookup signals
 	my_and8 AndModule(
 		.a(A),
 		.b(B),
@@ -47,7 +46,8 @@ module my_alu (
 		.result(op_add_sub_result),	
 		.overflow(add_sub_overflow)
 	);
-
+	
+	// Feed opcode and operation results into the decoder and get the final result
 	OpcodeDecoder Decoder(
 		.opcode(opcode),
 		.enable(enable),
@@ -64,6 +64,7 @@ module my_alu (
 		.result_overflow(final_overflow)
 	);
 
+	// Reset register if reset_n is LOW, otherwise save the final values to the register
    always_ff @(posedge clock) begin
 		if(~reset_n) begin
 			result <= 8'b0;

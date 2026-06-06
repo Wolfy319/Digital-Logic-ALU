@@ -1,3 +1,6 @@
+/*
+Author: Wolfy 
+*/
 module OpcodeDecoder (
 	input logic enable, reset_n, add_sub_overflow,
 	input logic [2:0] opcode,
