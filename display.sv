@@ -11,14 +11,16 @@ and on and outputs them.
 module display(
 // inputs
 	input logic sign,
-	input logic[3:0] hundreds,
-	input logic[3:0] tens,
-	input logic[3:0] ones,
+	input logic [3:0] hundreds,
+	input logic [3:0] tens,
+	input logic [3:0] ones,
+	input logic [3:0] mode_number,
 //outputs
 	output logic [6:0] hex0,
 	output logic [6:0] hex1,
 	output logic [6:0] hex2,
-	output logic [6:0] hex3
+	output logic [6:0] hex3,
+	output logic [6:0] hex5
 );
 
 //figure out what number to display in the ones
@@ -45,5 +47,10 @@ SevenSegmentDecode dec_hundreds(
 			hex3 = 7'b1111111;
 		end
 	end
+
+SevenSegmentDecode mode_choice(
+	.digit(mode_number),
+	.segments(hex5)
+);
 	
 endmodule
