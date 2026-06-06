@@ -13,7 +13,7 @@ always_comb begin
 		result_overflow = 1'b0;
 	end else begin
 		// Pick correct result based on opcode
-		case (opcode)
+		casez (opcode)
 			3'b000: result = and_result;
 			3'b001: result = or_result;
 			3'b010: result = xor_result;
@@ -26,7 +26,11 @@ always_comb begin
 		endcase
 		
 		// Update overflow bit
-		result_overflow = (opcode[2]&~opcode[1]) ? add_sub_overflow : 1'b0;
+		casez (opcode)
+			3'b10?: result_overflow = add_sub_overflow;
+			default: result_overflow = 1'b0;
+		endcase
+		
 	end
 	
 end

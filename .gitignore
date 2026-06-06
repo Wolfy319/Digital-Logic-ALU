@@ -1,6 +1,7 @@
 *.bak
 *.qsf
 *.qpf
+*.qws
 db/*
 transcript
 incremental_db/*
