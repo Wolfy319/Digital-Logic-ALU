@@ -1,0 +1,19 @@
+vsim -gui work.ALUTestbench
+
+add wave clk
+add wave enable
+add wave reset_n
+add wave A
+add wave B
+add wave opcode
+add wave result
+add wave resultExpected
+add wave overflow
+add wave overflowExpected
+
+radix signal A decimal
+radix signal B decimal
+radix signal result decimal
+radix signal resultExpected decimal
+
+run -all
