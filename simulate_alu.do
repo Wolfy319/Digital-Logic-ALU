@@ -7,13 +7,13 @@ add wave A
 add wave B
 add wave opcode
 add wave result
-add wave resultExpected
+add wave prevResultExpected
 add wave overflow
-add wave overflowExpected
+add wave prevOverflowExpected
 
 radix signal A decimal
 radix signal B decimal
 radix signal result decimal
-radix signal resultExpected decimal
+radix signal prevResultExpected decimal
 
 run -all
