@@ -11,13 +11,13 @@ module ALUTestbench();
 	logic overflow;
 
 	// Expected outputs
-	logic [7:0] resultExpected;
-	logic overflowExpected;
+	logic [7:0] resultExpected, prevResultExpected;
+	logic overflowExpected, prevOverflowExpected;
 
 	// Number of comparision errors since start of simulation
 	logic [30:0] testCases[9999:0];
-	logic testStarted;
-	int numErrors, testNum;
+	logic has_waited_once;
+	int numErrors, testNum, schedule_end;
 
 	/*
 	 * Instantiate ALU device under test.
@@ -48,28 +48,32 @@ module ALUTestbench();
 		 numErrors = 0;
 		 
 		 $readmemb("test_cases.tv", testCases);
-		 testNum = 0; numErrors = 0; testStarted = 0;
+		 testNum = 0; numErrors = 0; schedule_end = 0; has_waited_once = 0;
 		 
 		 #20;
 	end
 
 	always @(posedge clk) begin
-		#1;
-		if (~testStarted) begin
-			{enable,reset_n,use_A,A,B,opcode,overflowExpected,resultExpected} = testCases[testNum];
-		end else begin
-			if ( (result !== resultExpected) || (overflow !== overflowExpected) ) begin
-				$display("Error at %0t! Inputs: A=%b=%d, B=%b=%d, opcode=%b, reset_n=%b, enable=%b, use_A=%b", $time, A, A, B, B, opcode, reset_n, enable, use_A);
-				$display(" Output: result=%b=%d (%b=%d expected), overflow=%b (%b expected)", result, result, resultExpected, resultExpected, overflow, overflowExpected);
-				numErrors = numErrors + 1;
-			end
-			testNum = testNum + 1;
-			if ( (testCases[testNum] === 31'bx) || (numErrors >= MAX_ERRORS) ) begin
-				$display("%d tests completed with %d errors", testNum, numErrors);
-				$stop;
-			end
+//		#1;
+		{enable,reset_n,use_A,A,B,opcode,overflowExpected,resultExpected} <= testCases[testNum];
+		prevResultExpected <= resultExpected;
+		prevOverflowExpected <= overflowExpected;
+		if (~has_waited_once && A !== 8'bx) begin
+			has_waited_once = 1'b1;
+		end else if ( (result !== prevResultExpected) || (overflow !== prevOverflowExpected) ) begin
+			$display("Error at %0t! Inputs: A=%b=%d, B=%b=%d, opcode=%b, reset_n=%b, enable=%b, use_A=%b", $time, A, A, B, B, opcode, reset_n, enable, use_A);
+			$display(" Output: result=%b=%d (%b=%d expected), overflow=%b (%b expected)", result, result, prevResultExpected, prevResultExpected, overflow, prevOverflowExpected);
+			numErrors = numErrors + 1;
 		end
-		testStarted = ~testStarted;
+		testNum = testNum + 1;
+		
+		if ( (testCases[testNum] === 31'bx) || (numErrors >= MAX_ERRORS) ) begin
+			schedule_end = schedule_end + 1;
+		end
+		if (schedule_end === 3) begin
+//			#10;
+			$stop;
+		end
 	end
 
 endmodule

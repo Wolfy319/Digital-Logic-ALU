@@ -16,7 +16,7 @@ module SevenSegmentDecode(
 	 output logic [6:0] segments
 );
 
- */
+
 always_comb begin
     case (digit)
         //                   gfe_dcba

@@ -1,0 +1,54 @@
+<enable><reset_n><use_a>__<A>__<B>__<opcode>___<overflow>_<result>
+                   |
+testing operations V
+A=0101_0101, B=1111_0000, opcode=000=and, result=0101_0000
+A=0101_0101, B=1111_0000, opcode=001=or, overflow=0, result=1111_0101
+A=0101_0101, B=1111_0000, opcode=010=xor, overflow=0, result=1010_0101
+A=0101_0101, B=1111_0000, opcode=011=pass_a, overflow=0, result=0101_0101
+A=85, B=-16, opcode=100=add, overflow=0, result=69
+A=85, B=-16, opcode=101=subtract, overflow=0, result=101
+A=0101_0101, B=1111_0000, opcode=111=pass_b, overflow=0, result=1111_0000
+
+zeros for separation in waveform
+                                         |
+testing operations using previous result V
+output 0101_0101=85 to result for next case
+use_a=0, A=0000_0000, B=1111_0000, opcode=000, overflow=0, result=0101_0000
+output 0101_0101=85 to result for next case
+use_a=0, A=0000_0000, B=1111_0000, opcode=001, overflow=0, result=1111_0101
+output 0101_0101=85 to result for next case
+use_a=0, A=0000_0000, B=1111_0000, opcode=010, overflow=0, result=1010_0101
+output 0101_0101=85 to result for next case
+use_a=0, A=0000_0000, B=1111_0000, opcode=011, overflow=0, result=0101_0101
+output 0101_0101=85 to result for next case
+use_a=0, A=0000_0000, B=1111_0000, opcode=100, overflow=0, result=0100_0101
+output 0101_0101=85 to result for next case
+use_a=0, A=0000_0000, B=1111_0000, opcode=101, overflow=0, result=0110_0101
+output 0101_0101=85 to result for next case
+use_a=0, A=0000_0000, B=1111_0000, opcode=111, overflow=0, result=1111_0000
+
+zeros for separation in waveform
+                 |
+testing overflow V
+A= 127, B=001, opcode=add, overflow=1, result=-128
+A= 127, B=002, opcode=add, overflow=1, result=-127
+A=-128, B= -1, opcode=add, overflow=1, result= 127
+A=-128, B= -2, opcode=add, overflow=1, result= 126
+A= 127, B= -1, opcode=sub, overflow=1, result=-128
+A= 127, B= -2, opcode=sub, overflow=1, result=-127
+A=-128, B=001, opcode=sub, overflow=1, result= 127
+A=-128, B=002, opcode=sub, overflow=1, result= 126
+A= 126, B=001, opcode=add, overflow=0, result= 127
+A=-127, B= -1, opcode=add, overflow=0, result=-128
+A= 126, B= -1, opcode=sub, overflow=0, result= 127
+A=-127, B=001, opcode=sub, overflow=0, result=-128
+
+zeros for separation in waveform
+                         |
+testing enable and reset V
+enable=1, reset=1, A=0101_0101, B=0000_0000, opcode=011, overflow=0, result=0101_0101
+enable=0, reset=1, A=0000_0000, B=0000_0000, opcode=000, overflow=0, result=0101_0101
+enable=0, reset=1, A=1111_1111, B=1111_1111, opcode=000, overflow=0, result=0101_0101
+enable=0, reset=0, A=1111_1111, B=1111_1111, opcode=000, overflow=0, result=0000_0000
+enable=1, reset=1, A=0101_0101, B=0000_0000, opcode=011, overflow=0, result=0101_0101
+enable=1, reset=0, A=1111_1111, B=1111_1111, opcode=000, overflow=0, result=0000_0000
