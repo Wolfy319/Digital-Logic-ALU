@@ -1,12 +1,17 @@
 /*
-Authors: David, Zhair, Wolfy 
-Description: The main arithmatic unit for the entire project
-It holds the modules for all the operations, and runs them once the opcode
-switch is enabled, does this a singular time to allow previous results to be added. 
-The opcode then selects which of these operations results the ALU will output.
-Has a register for the results to be stored
-Will also allow for its value to be erased with a reset button.
-Sources Used: Class Textbook and Class slides
+ * ECE 204 8Bit ALU
+ * Main ALU module
+ *
+* Authors: David Smith, Zhair Maldonado Gonzalez, Wolfy Fiorini
+*
+* Description: The main arithmatic unit for the entire project
+* It holds the modules for all the operations, and runs them once the opcode
+* switch is enabled, does this a singular time to allow previous results to be added. 
+* The opcode then selects which of these operations results the ALU will output.
+* Has a register for the results to be stored
+* Will also allow for its value to be erased with a reset button.
+*
+* Sources Used: Class Textbook and Class slides
 */
 
 module my_alu (

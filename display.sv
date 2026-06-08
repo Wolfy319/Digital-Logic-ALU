@@ -1,11 +1,14 @@
 /*
-Author: Zhair Maldonado Gonzalez
-
-Description: This is really a wrapper to neatly connect
-all of my individual sections for the hexes together,
-it gets the numbers for the ones, tens and hundereds places
-as an input, then it figures out what to segements to turn off
-and on and outputs them.
+ * ECE 204 8Bit ALU
+* Output and display module
+*
+*Author: Zhair Maldonado Gonzalez
+*
+* Description: This is really a wrapper to neatly connect
+* all of my individual sections for the hexes together,
+* it gets the numbers for the ones, tens and hundereds places
+* as an input, then it figures out what to segements to turn off
+* and on and outputs them.
 */
 
 module display(

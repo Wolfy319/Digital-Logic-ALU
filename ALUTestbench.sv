@@ -1,8 +1,12 @@
 /*
-Authors: David
-Description: The testbench for the ALU. Loads a set of test vectors from a provided
-file and runs all the tests, checking for errors.
-Sources Used: Class Textbook and Class slides
+ * ECE 204 8Bit ALU
+* ALU testbench module
+*
+* Authors: David Smith
+*
+* Description: The testbench for the ALU. Loads a set of test vectors from a provided
+* file and runs all the tests, checking for errors.
+* Sources Used: Class Textbook and Class slides
 */
 module ALUTestbench();
 	localparam MAX_ERRORS = 10;

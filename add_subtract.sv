@@ -1,9 +1,13 @@
 /*
-Author: David Smith
-Description: gets two 8-bit numbers and a bit deciding whether to add or subtract
-If adding, add A and B. If subtracting, add A to the 1's Complement of B and then
-add 1
-sources: Textbook and class lecture
+ * ECE 204 8Bit ALU
+* Addition and subtraction module
+*
+* Author: David Smith
+*
+* Description: gets two 8-bit numbers and a bit deciding whether to add or subtract
+* If adding, add A and B. If subtracting, add A to the 1's Complement of B and then
+* add 1
+* sources: Textbook and class lecture
 */
 module add_subtract (
   input logic subtract,

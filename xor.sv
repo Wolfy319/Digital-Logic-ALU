@@ -1,10 +1,13 @@
 /*
-Author: David Smith
-Description: gets an input from A and B,
-compares the bits and if only one of the bit pairs
-is 1 then return 1, otherwise return 0
-
-Sources Used:Textbook, Slides from class
+ * ECE 204 8Bit ALU
+ * XOR logic module
+ *
+* Author: David Smith
+* Description: gets an input from A and B,
+* compares the bits and if only one of the bit pairs
+* is 1 then return 1, otherwise return 0
+*
+* Sources Used:Textbook, Slides from class
 */
 
 module my_xor8 (

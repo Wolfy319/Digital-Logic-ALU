@@ -1,9 +1,13 @@
 /*
-Author: Wolfy 
-description: is an opcode decoder, based on the opcode given, allow one of the results from the operations through
-and output it, also output if there was a result overflow in addition and subtraction
-Sources used: Textbook, In class examples
-
+ * ECE 204 8Bit ALU
+* Opcode decoding module
+*
+* Author: Wolfy Fiorini
+*
+* Description: is an opcode decoder, based on the opcode given, allow one of the results from the operations through
+* and output it, also output if there was a result overflow in addition and subtraction
+* Sources used: Textbook, In class examples
+*
 */
 module OpcodeDecoder (
 	input logic enable, reset_n, add_sub_overflow,

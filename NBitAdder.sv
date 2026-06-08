@@ -1,8 +1,11 @@
 /*
-Author: David Smith
-Description: A N-Bit adder creates using many instances of the 1-bit full adder
-I created. Necessary so that I can perform addition w/ control over the carry bit, 
-which isn't provided by the built in + operator.
+ * ECE 204 8Bit ALU
+* Full adder module (N-bit)
+*
+* Author: David Smith
+* Description: A N-Bit adder creates using many instances of the 1-bit full adder
+* I created. Necessary so that I can perform addition w/ control over the carry bit, 
+* which isn't provided by the built in + operator.
 */
 
 module NBitAdder 

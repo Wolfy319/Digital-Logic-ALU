@@ -1,7 +1,11 @@
 /*
-Author: David Smith
-Description: A 1 bit full adder I created in order to be able to control the 
-carry in bits
+ * ECE 204 8Bit ALU
+* full adder module
+*
+* Author: David Smith
+*
+* Description: A 1 bit full adder I created in order to be able to control the 
+* carry in bits
 */
 
 module full_adder (

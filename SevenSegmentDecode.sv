@@ -6,10 +6,10 @@
  * Example 4.25 "Seven-Segment Display Decoder" (Page 198)
  *
  * Author(s): Zhair Maldonado
-
- Description: Takes a binary number and converts it to our seven segment display to properly display
- the result on the hex display
- Sources Used: Lab 3B example, Textbook
+* 
+ * Description: Takes a binary number and converts it to our seven segment display to properly display
+ * the result on the hex display
+ * Sources Used: Lab 3B example, Textbook
  */
 module SevenSegmentDecode(
     input logic [3:0] digit,

@@ -1,12 +1,16 @@
 /*
-Authors: David, Zhair, Wolfy 
-
-Description: The wrapper used to take inputs from the FPGA and output it 
-to the hexcode and LED pads. It also holds the registers for the opcode,
-a, b, along with an enable signal to allow the display to show either the
-previous result or blank on the click of the enable button.
-Sources Used: Textbook, Slides from Class
-
+ * ECE 204 8Bit ALU
+ * Hardware driver module
+ *
+* Authors: David Smith, Zhair Maldonado Gonzalez, Wolfy Fiorini
+* 
+* Description: The wrapper used to take inputs from the FPGA and output it 
+* to the hexcode and LED pads. It also holds the registers for the opcode,
+* a, b, along with an enable signal to allow the display to show either the
+* previous result or blank on the click of the enable button.
+*
+* Sources Used: Textbook, Slides from Class
+*
 */
 
 module HardwareDriver(

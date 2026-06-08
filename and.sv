@@ -1,8 +1,11 @@
 /*
-Author: David Smith
-Description: gets two inputs, and compares the bits
-if a and b are both 1, output 1, else output 0
-sources: Textbook and class lecture
+ * ECE 204 8Bit ALU
+* AND logic module
+*
+* Author: David Smith
+* Description: gets two inputs, and compares the bits
+* if a and b are both 1, output 1, else output 0
+* sources: Textbook and class lecture
 */
 
 module my_and8 (
