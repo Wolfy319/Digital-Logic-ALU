@@ -1,3 +1,10 @@
+/*
+Author: David Smith
+Description: A N-Bit adder creates using many instances of the 1-bit full adder
+I created. Necessary so that I can perform addition w/ control over the carry bit, 
+which isn't provided by the built in + operator.
+*/
+
 module NBitAdder 
 #(parameter N = 8) 
 (
@@ -7,11 +14,13 @@ module NBitAdder
 	output logic [N-1:0] Z
 );
 	
-	// assign {Z,Cout} = A + B + Cin;
-	
+   // Create arrays of carry-ins and carry-outs
    logic [N-1:0] Cins, Couts;
+   // Set the first carry-in to the carry-in input
    assign Cins[0] = Cin;
 
+   // Generates N 1-bit full adders and hooks them up into an N-bit ripple
+   // carry adder
 	genvar i;
    generate
         for (i = 0; i < N; i++) begin: bit_loop
@@ -28,6 +37,7 @@ module NBitAdder
 		  end
    endgenerate
 
+   // Assign the Cout output to the last carry bit in the array
    assign Cout = Couts[N-1];
 	
 endmodule

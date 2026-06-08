@@ -1,3 +1,9 @@
+/*
+Authors: David
+Description: The testbench for the ALU. Loads a set of test vectors from a provided
+file and runs all the tests, checking for errors.
+Sources Used: Class Textbook and Class slides
+*/
 module ALUTestbench();
 	localparam MAX_ERRORS = 10;
 
@@ -14,7 +20,7 @@ module ALUTestbench();
 	logic [7:0] resultExpected, prevResultExpected;
 	logic overflowExpected, prevOverflowExpected;
 
-	// Number of comparision errors since start of simulation
+	// The test vectors and logic variables
 	logic [30:0] testCases[9999:0];
 	logic has_waited_once;
 	int numErrors, testNum, schedule_end;
@@ -43,7 +49,7 @@ module ALUTestbench();
 		 #5;
 	end
 
-	/* Reset the system, then validate two consecutive days. */
+	/* Read the file of test_vectors and initialize variables to 0 */
 	initial begin
 		 numErrors = 0;
 		 
@@ -54,74 +60,38 @@ module ALUTestbench();
 	end
 
 	always @(posedge clk) begin
-//		#1;
+                // Set the inputs and expected outputs to the test_vector
 		{enable,reset_n,use_A,A,B,opcode,overflowExpected,resultExpected} <= testCases[testNum];
+
+                // Store the previous expected results into variables
 		prevResultExpected <= resultExpected;
 		prevOverflowExpected <= overflowExpected;
-		if (~has_waited_once && A !== 8'bx) begin
+
+		if (~has_waited_once && A !== 8'bx) begin 
+                        // Don't perform comparison on the first clock cycle
 			has_waited_once = 1'b1;
 		end else if ( (result !== prevResultExpected) || (overflow !== prevOverflowExpected) ) begin
+                        // Otherwise, if the results don't match the expected
+                        // results, display an error
 			$display("Error at %0t! Inputs: A=%b=%d, B=%b=%d, opcode=%b, reset_n=%b, enable=%b, use_A=%b", $time, A, A, B, B, opcode, reset_n, enable, use_A);
 			$display(" Output: result=%b=%d (%b=%d expected), overflow=%b (%b expected)", result, result, prevResultExpected, prevResultExpected, overflow, prevOverflowExpected);
 			numErrors = numErrors + 1;
 		end
+
+                // Increment the test number
 		testNum = testNum + 1;
 		
+                // If there have been too many errors or we run out of test
+                // cases, then schedule the testbench to end
 		if ( (testCases[testNum] === 31'bx) || (numErrors >= MAX_ERRORS) ) begin
 			schedule_end = schedule_end + 1;
 		end
+
+                // 3 clock cycles after the testbench has been scheduled to
+                // end, end the testbench
 		if (schedule_end === 3) begin
-//			#10;
 			$stop;
 		end
 	end
 
 endmodule
-/*
-module SevenSegmentTestbench();
-    
-    logic clk, reset;
-    
-    logic [3:0] digitTest;
-    logic [6:0] segmentsMeasured, segmentsTest;
-    
-    logic [31:0] vectornum, errors;
-    logic [10:0] testvectors[10000:0];
-
-    SevenSegmentDecode dut(
-    .digit(digitTest),
-    .segments(segmentsMeasured)
-    );
-
-    always begin
-        clk = 1; #5; clk = 0;
-    end
-     
-    initial begin     
-        $readmemb("text.tv", testvectors);
-        vectornum = 0; errors = 0;
-        reset = 1; #27; reset = 0;
-    end
-    
-    always @(posedge clk) begin
-        #1;
-        {digitTest, segmentsTest} = testvectors[vectornum];
-    end
-	
-    always @(negedge clk) begin
-        if (~reset) begin
-            if (segmentsMeasured !== segmentsTest) begin
-                $display("Error: input = %h", digitTest);
-                $display(" output = %b (%b expected)", segmentsMeasured, segmentsTest);
-                errors = errors + 1;
-            end
-            vectornum = vectornum + 1;
-            if (testvectors[vectornum] === 11'bx) begin
-                $display("%d tests completed with %d errors", vectornum, errors);
-                $stop;
-            end
-        end
-    end
-
-endmodule
-*/

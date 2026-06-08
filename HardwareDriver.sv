@@ -74,6 +74,7 @@ always_ff @(negedge choose_mode_n, posedge ~reset_n) begin
 	end
 end
 
+// Ensure the ALU only remains enabled for 1 clock cycle per button pressed
 always_ff @(negedge clock) begin
 	if (~enable) begin
 		if (allow_enable) begin
