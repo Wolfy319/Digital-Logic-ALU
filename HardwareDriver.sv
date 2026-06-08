@@ -49,8 +49,6 @@ always_ff @(negedge choose_mode_n, posedge ~reset_n) begin
 		opcode <= 3'b000;
 		a_final <= 8'b00000000;
 		b_final <= 8'b00000000;
-		a <= 8'b00000000;
-		b <= 8'b00000000;
 	end else begin
 		case (choice_bits)
 			2'b00: begin
